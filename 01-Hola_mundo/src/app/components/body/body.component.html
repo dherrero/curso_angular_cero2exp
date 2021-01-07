@@ -1,0 +1,32 @@
+<section class="m-5">
+    <h1>body works!</h1>
+
+    <div class="row mt-3">
+        <div class="col">
+            <h1>*ngIf</h1>
+            <hr>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Ejemplo ngIF</h5>
+                    <ul *ngIf="mostrarCita">
+                        <li>
+                            Autor: {{cita.autor}}
+                        </li>
+                        <li>Mensaje: {{cita.mensaje}}</li>
+                    </ul>
+                    <button type="button" (click)="mostrarCita=!mostrarCita"
+                        class="btn btn-primary">Mostrar/Ocultar</button>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <h1>*ngFor</h1>
+            <hr>
+            <ul class="list-group">
+                <li *ngFor="let personaje of personajes; let i = index" class="list-group-item">{{i+1}} - {{personaje}}
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</section>
