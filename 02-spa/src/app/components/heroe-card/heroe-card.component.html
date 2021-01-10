@@ -1,0 +1,13 @@
+<div *ngIf="heroe" class="card fadeIn animated fast">
+    <img [src]="heroe.img" class="card-img-top" [alt]="heroe.nombre">
+    <div class="card-body">
+        <h5 class="card-title">{{heroe.nombre}}</h5>
+        <p class="card-text">{{heroe.bio | slice:0:120}}...</p>
+        <p class="card-text">
+            <small class="text-muted">
+                {{heroe.casa}} - {{heroe.aparicion | date: 'MM/yyyy'}}
+            </small>
+        </p>
+        <button class="btn btn-block btn-primary" (click)="seeHeroe()">Ver más...</button>
+    </div>
+</div>

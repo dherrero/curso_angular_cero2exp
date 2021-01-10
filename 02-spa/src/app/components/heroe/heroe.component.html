@@ -1,0 +1,19 @@
+<div *ngIf="heroe" class="content fadeIn animated fast">
+    <div class="row">
+        <div class="col-md-4">
+            <img [src]="heroe.img" class="card-img-top" [alt]="heroe.nombre">
+        </div>
+        <div class="col-md-8">
+            <h5 class="card-title">{{heroe.nombre}}</h5>
+            <hr>
+            <p class="card-text">{{heroe.bio}}</p>
+            <p class="card-text">
+                <small class="text-muted">
+                    {{heroe.casa}} - {{heroe.aparicion | date: 'MM/yyyy'}}
+                </small>
+            </p>
+            <button class="btn btn-danger" [routerLink]="['/heroes']">Volver</button>
+        </div>
+    </div>
+
+</div>

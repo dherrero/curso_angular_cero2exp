@@ -1,0 +1,8 @@
+<h1>Buscando <small>{{termino}}</small></h1>
+
+<div class="card-columns mt-5 mb-5" *ngIf="heroes.length > 0">
+    <app-heroe-card [heroe]="heroe" *ngFor="let heroe of heroes"></app-heroe-card>
+</div>
+<div class="card-columns mt-5 mb-5" *ngIf="heroes.length === 0">
+    <p>No hay resultados para {{termino}}</p>
+</div>
