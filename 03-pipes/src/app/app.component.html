@@ -1,0 +1,183 @@
+<h1 class="mt-3">Pipes <small>Angular</small></h1>
+<hr>
+<div class="row mb-5">
+  <div class="col">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Variable</th>
+          <th>Pipe</th>
+          <th>Salida</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{nombre}}</td>
+          <td>uppercase</td>
+          <td> {{nombre | uppercase}} </td>
+        </tr>
+        <tr>
+          <td>{{nombre}}</td>
+          <td>lowercase</td>
+          <td> {{nombre | lowercase}} </td>
+        </tr>
+        <tr>
+          <td>{{nombre}}</td>
+          <td>slice:0:3</td>
+          <td> {{nombre | slice:0:3}} </td>
+        </tr>
+        <tr>
+          <td>{{nombre}}</td>
+          <td>slice:3</td>
+          <td> {{nombre | slice:3}} </td>
+        </tr>
+        <tr>
+          <td>{{array}}</td>
+          <td>slice:1:5</td>
+          <td> {{array | slice:1:5}} </td>
+        </tr>
+        <tr>
+          <td>{{PI}}</td>
+          <td>number</td>
+          <td> {{PI | number}} </td>
+        </tr>
+        <tr>
+          <td>{{PI}}</td>
+          <td>number:'1.0-0'</td>
+          <td> {{PI | number:'1.0-0'}} </td>
+        </tr>
+        <tr>
+          <td>{{PI}}</td>
+          <td>number:'3.0-0'</td>
+          <td> {{PI | number:'3.0-0'}} </td>
+        </tr>
+        <tr>
+          <td>{{PI}}</td>
+          <td>number:'.0-2'</td>
+          <td> {{PI | number:'.0-2'}} </td>
+        </tr>
+        <tr>
+          <td>{{porcentaje}}</td>
+          <td>percent</td>
+          <td> {{porcentaje | percent }} </td>
+        </tr>
+        <tr>
+          <td>{{porcentaje}}</td>
+          <td>percent:'2.2-2'</td>
+          <td> {{porcentaje | percent:'2.2-2' }} </td>
+        </tr>
+        <tr>
+          <td>{{sueldo}}</td>
+          <td>currency</td>
+          <td> {{sueldo | currency }} </td>
+        </tr>
+        <tr>
+          <td>{{sueldo}}</td>
+          <td>currency:'EUR'</td>
+          <td> {{sueldo | currency:'EUR' }} </td>
+        </tr>
+        <tr>
+          <td>{{sueldo}}</td>
+          <td>currency:'CAD':'symbol-narrow'</td>
+          <td> {{sueldo | currency:'CAD':'symbol-narrow' }} </td>
+        </tr>
+        <tr>
+          <td>{{sueldo}}</td>
+          <td>currency:'CAD':'symbol'</td>
+          <td> {{sueldo | currency:'CAD':'symbol' }} </td>
+        </tr>
+        <tr>
+          <td>{{sueldo}}</td>
+          <td>currency:'SOME ':'symbol':'.0-0'</td>
+          <td> {{sueldo | currency:'SOME ':'symbol':'.0-0' }} </td>
+        </tr>
+        <tr>
+          <td>{{heroe}}</td>
+          <td>json</td>
+          <td>
+            <pre>{{heroe | json }}</pre>
+          </td>
+        </tr>
+        <tr>
+          <td>{{promesa}}</td>
+          <td>async</td>
+          <td> {{promesa | async }} </td>
+        </tr>
+        <tr>
+          <td>{{fecha}}</td>
+          <td>date</td>
+          <td> {{fecha | date }} </td>
+        </tr>
+        <tr>
+          <td>{{fecha}}</td>
+          <td>date:'medium'</td>
+          <td> {{fecha | date:'medium' }} </td>
+        </tr>
+        <tr>
+          <td>{{fecha}}</td>
+          <td>date:'short'</td>
+          <td> {{fecha | date:'short' }} </td>
+        </tr>
+        <tr>
+          <td>{{fecha}}</td>
+          <td>date:'H:mm, dd LLLL yyyy'</td>
+          <td> {{fecha | date:'H:mm, dd LLLL yyyy' }} </td>
+        </tr>
+        <tr>
+          <td>{{fecha}}</td>
+          <td>date:'H:mm dd/MM/yy':'UTC+2'</td>
+          <td> {{fecha | date:'H:mm dd/MM/yy':'UTC+2' }} </td>
+        </tr>
+        <tr>
+          <td>{{fecha}}</td>
+          <td>date:'H:mm, dd LLLL yyyy':'':'es'</td>
+          <td> {{fecha | date:'H:mm, dd LLLL yyyy':'':'es' }} </td>
+        </tr>
+        <tr>
+          <td>{{fecha}} idioma: {{idioma}}
+            <br>
+            <button class="btn btn-primary ms-2" (click)="cambiarIdioma('es')">Es</button>
+            <button class="btn btn-primary ms-2" (click)="cambiarIdioma('en')">En</button>
+            <button class="btn btn-primary ms-2" (click)="cambiarIdioma('fr')">Fr</button>
+          </td>
+          <td>date:'H:mm, dd LLLL yyyy':'':'es'</td>
+          <td> {{fecha | date:'H:mm, dd LLLL yyyy':'':idioma }} </td>
+        </tr>
+        <tr>
+          <td>{{nombre2}}</td>
+          <td>custom capitalizado</td>
+          <td> {{nombre2 | capitalizado}} </td>
+        </tr>
+        <tr>
+          <td>{{nombre2}}</td>
+          <td>custom capitalizado:true</td>
+          <td> {{nombre2 | capitalizado:true}} </td>
+        </tr>
+        <tr>
+          <td>{{nombre}}</td>
+          <td>
+            contrasena:{{activar}}
+            <br>
+            <button class="btn btn-primary" (click)="switchActivar()">
+              activar/desactivar
+            </button>
+
+          </td>
+          <td> {{nombre | contrasena:activar}} </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <h4>Slice con *ngFor slice:5:20</h4>
+    <ul>
+      <li *ngFor="let item of array | slice:5:20">{{item}}</li>
+    </ul>
+    <hr>
+    <h4>Dom seguro</h4>
+    <div class="col">
+      <iframe width="560" height="315" [src]="videoUrl | domseguro" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
