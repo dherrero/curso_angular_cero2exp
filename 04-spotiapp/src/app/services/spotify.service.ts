@@ -1,26 +1,55 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SpotifyService {
 
-  private token: string = 'BQCV4oUKsSG73q0NwnVso2Xjf9Vfx8p0_KAJTNtUJ75t18eQUtSJp6-6_cOTM0DQbiFDM5m-9hcoz-1Rhdw';
+  constructor(private http: HttpClient) {
+    console.log('Spotify Service Listo');
+  }
 
-  constructor(private httpClient: HttpClient) {
+  getQuery( query: string ) {
+
+    const url = `https://api.spotify.com/v1/${ query }`;
+
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer BQDsnU8IhPdDKrUXuWq7FVMlrNmZrmMJiSyG6fRESINYgAJBBpnLiQ6GThLMuQsxqlLJVavErt4qQAgzvrA'
+    });
+
+    return this.http.get(url, { headers });
 
   }
 
+
   getNewReleases() {
 
-    const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.token}` });
+    return this.getQuery('browse/new-releases?limit=20')
+              .pipe( map( (data:any) => data['albums'].items ));
 
-    this.httpClient.get('https://api.spotify.com/v1/browse/new-releases', { headers }).subscribe(
-      (res: any) => {
-        console.log(res);
-      }
-    )
+  }
+
+  getArtistas( termino: string ) {
+
+    return this.getQuery(`search?q=${ termino }&type=artist&limit=15`)
+                .pipe( map( (data:any) => data['artists'].items));
+
+  }
+
+  getArtista( id: string ) {
+
+    return this.getQuery(`artists/${ id }`);
+                // .pipe( map( data => data['artists'].items));
+
+  }
+
+  getTopTracks( id: string ) {
+
+    return this.getQuery(`artists/${ id }/top-tracks?country=us`)
+                .pipe( map( (data:any) => data['tracks']));
 
   }
 
