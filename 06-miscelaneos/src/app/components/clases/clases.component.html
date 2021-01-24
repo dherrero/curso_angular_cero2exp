@@ -1,0 +1,28 @@
+<div class="alert" [ngClass]="alert" role="alert">
+  A simple success alert—check it out!
+</div>
+<button class="btn btn-info mr-2" (click)="alert = 'alert-info'">Info</button>
+<button class="btn btn-success" (click)="alert = 'alert-success'">
+  Success
+</button>
+
+<br />
+<hr />
+<h3 [appResaltado]="'red'">Proceso asíncrono</h3>
+
+<div class="row">
+  <div class="col">
+    <button
+      class="btn btn-success"
+      (click)="procesoAsync()"
+      [disabled]="loading"
+    >
+      <i
+        class="mr-2 fa"
+        [ngClass]="{ 'fa-refresh fa-spin': loading, 'fa-save': !loading }"
+      ></i>
+      <span *ngIf="!loading">Guardar</span>
+      <span *ngIf="loading">Espere por favor</span>
+    </button>
+  </div>
+</div>
